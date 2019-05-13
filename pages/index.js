@@ -1,16 +1,16 @@
 import Layout from '../components/layout/primaryLayout';
 import Link from 'next/link';
-import { sizing } from '@material-ui/system';
-import { Grid, Typography, Button, Container } from '@material-ui/core';
+import { Grid, Typography, Button } from '@material-ui/core';
 
-const Home = () => {
+const Home = (props) => {
+	console.log(props)
 	return (
 		<Layout>	
 			<Grid item xs={12}>
 				<Typography align="center">Call For Help</Typography>
 			</Grid>
 			<Grid item xs={12} sm={6}>
-				<Link passHref prefetch href="/request">
+				<Link passHref prefetch href="/request?name=ic">
 					<Button 
 						style={{ padding: "15px" }}
 						fullWidth
@@ -22,7 +22,7 @@ const Home = () => {
 				</Link>
 			</Grid>
 			<Grid item xs={12} sm={6}>	
-				<Link passHref prefetch href="/request">
+				<Link passHref prefetch href="/request?name=maintenance">
 					<Button 
 						style={{ padding: "15px" }}
 						fullWidth

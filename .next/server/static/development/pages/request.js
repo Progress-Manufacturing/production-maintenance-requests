@@ -211,6 +211,440 @@ var MainGrid = styled_components__WEBPACK_IMPORTED_MODULE_5___default()(_materia
 
 /***/ }),
 
+/***/ "./lib/options.js":
+/*!************************!*\
+  !*** ./lib/options.js ***!
+  \************************/
+/*! exports provided: Options */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Options", function() { return Options; });
+var Options = [{
+  id: 0,
+  main: {
+    id: 0,
+    label: 'Accupress'
+  },
+  sub: [{
+    id: 0,
+    label: 'Sawed L-Pins'
+  }, {
+    id: 1,
+    label: 'Sawed Hitch Pins'
+  }, {
+    id: 2,
+    label: 'Punched L-Bracket'
+  }, {
+    id: 3,
+    label: 'Empty Bent L-Bracket Bin'
+  }, {
+    id: 4,
+    label: 'Punched Bolt Channel'
+  }, {
+    id: 5,
+    label: 'Empty Bent Bolt Channel Bin'
+  }, {
+    id: 6,
+    label: '14K Punched Bolt Channel'
+  }, {
+    id: 7,
+    label: 'Empty 14K Bent Bolt Channel Bin'
+  }, {
+    id: 8,
+    label: 'Take Bins Away'
+  }]
+}, {
+  id: 1,
+  main: {
+    id: 0,
+    label: 'Assembly'
+  },
+  sub: [{
+    id: 0,
+    label: '10K Hitch Balls'
+  }, {
+    id: 1,
+    label: '18K Hitch Balls'
+  }]
+}, {
+  id: 2,
+  main: {
+    id: 0,
+    label: 'Deburring Station'
+  },
+  sub: [{
+    id: 0,
+    label: 'Punched Inside Link Plate '
+  }, {
+    id: 1,
+    label: 'Empty Deburred Inside Link Plate'
+  }, {
+    id: 2,
+    label: 'Take Bins Away'
+  }]
+}, {
+  id: 3,
+  main: {
+    id: 0,
+    label: 'EC400'
+  },
+  sub: [{
+    id: 0,
+    label: 'Sawed 6K Arms'
+  }, {
+    id: 1,
+    label: 'Sawed 10K Arms'
+  }, {
+    id: 2,
+    label: 'Sawed 12k Arms'
+  }, {
+    id: 3,
+    label: 'Sawed e2 Arms'
+  }, {
+    id: 4,
+    label: 'Take Bin Away'
+  }]
+}, {
+  id: 4,
+  main: {
+    id: 0,
+    label: 'EC400 Flash'
+  },
+  sub: [{
+    id: 0,
+    label: 'Sawed 12K Socket Bin'
+  }, {
+    id: 1,
+    label: 'Empty 12K Carburized Socket Bin'
+  }, {
+    id: 2,
+    label: 'Sawed 10K Socket Bin'
+  }, {
+    id: 3,
+    label: 'Empty 10K Carburized Socket Bin'
+  }, {
+    id: 4,
+    label: 'Sawed 6K Socket Bin'
+  }, {
+    id: 5,
+    label: 'Empty 6K Carburized Socket Bin'
+  }, {
+    id: 6,
+    label: 'Empty Machined Outside Link Plate Bin'
+  }, {
+    id: 7,
+    label: 'Sheared Outside Link Plate Bin'
+  }, {
+    id: 8,
+    label: 'Take Bins Away'
+  }]
+}, {
+  id: 5,
+  main: {
+    id: 0,
+    label: 'EC400 Robot'
+  },
+  sub: [{
+    id: 0,
+    label: 'Sheared Outside Link Plate Bin'
+  }, {
+    id: 1,
+    label: 'Empty Machined Outside Link Plate Bin'
+  }, {
+    id: 2,
+    label: 'Empty Carburized 10K Socket Bin'
+  }, {
+    id: 3,
+    label: 'Sawed 12K Socket Bin'
+  }, {
+    id: 4,
+    label: 'Empty Carburized 12K Socket Bin'
+  }, {
+    id: 5,
+    label: 'Sawed 6K Socket Bin'
+  }, {
+    id: 6,
+    label: 'Empty Carburized 6K Socket Bin'
+  }, {
+    id: 7,
+    label: 'Take Bins Away'
+  }]
+}, {
+  id: 6,
+  main: {
+    id: 0,
+    label: 'Greenerd Press'
+  },
+  sub: [{
+    id: 0,
+    label: 'Punched L-Bracket'
+  }, {
+    id: 1,
+    label: 'Punched Bolt Channel'
+  }, {
+    id: 2,
+    label: 'Inside Link Plate'
+  }, {
+    id: 3,
+    label: 'Sawed Bottom Plate'
+  }, {
+    id: 4,
+    label: 'Punched and Nipped Bottom Plate'
+  }, {
+    id: 5,
+    label: 'Sheared Gussets'
+  }, {
+    id: 6,
+    label: 'Take Bins Away'
+  }]
+}, {
+  id: 7,
+  main: {
+    id: 0,
+    label: 'Grinding Room'
+  },
+  sub: [{
+    id: 0,
+    label: '10k Shanks'
+  }, {
+    id: 1,
+    label: '12K Shanks'
+  }, {
+    id: 2,
+    label: 'Specialty Shanks'
+  }, {
+    id: 3,
+    label: 'Take Bins Away'
+  }]
+}, {
+  id: 8,
+  main: {
+    id: 0,
+    label: 'Head Assembly'
+  },
+  sub: [{
+    id: 0,
+    label: '10K Carburized Sockets'
+  }, {
+    id: 1,
+    label: '12K Carburized sockets'
+  }, {
+    id: 2,
+    label: '6K Carburized Sockets'
+  }, {
+    id: 3,
+    label: '4K Carburized Sockets'
+  }, {
+    id: 4,
+    label: 'Punched & Nipped Bottom Plate'
+  }, {
+    id: 5,
+    label: 'Overseas Sockets'
+  }, {
+    id: 6,
+    label: 'Take Sockets Away'
+  }, {
+    id: 7,
+    label: 'Take Crate Away'
+  }]
+}, {
+  id: 9,
+  main: {
+    id: 0,
+    label: 'Makino EQ'
+  },
+  sub: [{
+    id: 0,
+    label: 'Forged Heads'
+  }, {
+    id: 1,
+    label: 'Sawed 10" 1018'
+  }, {
+    id: 2,
+    label: 'Sawed 10" A572'
+  }, {
+    id: 3,
+    label: 'Sawed 9.5" A572'
+  }, {
+    id: 4,
+    label: 'Take Bins Away'
+  }]
+}, {
+  id: 10,
+  main: {
+    id: 0,
+    label: 'Makino Flash'
+  },
+  sub: [{
+    id: 0,
+    label: 'Ball Holders'
+  }, {
+    id: 1,
+    label: '6" Drop Bars'
+  }, {
+    id: 2,
+    label: '8" Drop Bars'
+  }, {
+    id: 3,
+    label: '10" Drop Bars'
+  }, {
+    id: 4,
+    label: '4" Drop Bar'
+  }, {
+    id: 5,
+    label: '2" Fixed Ball Mount'
+  }, {
+    id: 6,
+    label: '6" HD Drop Bar'
+  }, {
+    id: 7,
+    label: '8" HD Drop Bar'
+  }, {
+    id: 8,
+    label: '10" HD Drop Bar'
+  }, {
+    id: 9,
+    label: '2.5" Ball Holder'
+  }, {
+    id: 10,
+    label: 'Remove Pallets'
+  }]
+}, {
+  id: 11,
+  main: {
+    id: 0,
+    label: 'Paint Area'
+  },
+  sub: [{
+    id: 0,
+    label: 'Punched Inside Link Plate'
+  }, {
+    id: 1,
+    label: 'Machined Outside Link Plate'
+  }, {
+    id: 2,
+    label: 'Bent L-Bracket'
+  }]
+}, {
+  id: 12,
+  main: {
+    id: 0,
+    label: 'Red Shear'
+  },
+  sub: [{
+    id: 0,
+    label: 'Empty Outside Link Plate'
+  }, {
+    id: 1,
+    label: 'Empty Sheared Gussets'
+  }, {
+    id: 2,
+    label: 'Take Bin Away'
+  }]
+}, {
+  id: 13,
+  main: {
+    id: 0,
+    label: 'Saws'
+  },
+  sub: [{
+    id: 0,
+    label: 'Empty Bin of Sawed L-Pins'
+  }, {
+    id: 1,
+    label: 'Empty Bin of Sawed Hitch Pins'
+  }, {
+    id: 2,
+    label: 'Empty Bin of Sawed 10" A572'
+  }, {
+    id: 3,
+    label: 'Empty Bin of Sawed 9.5" A572'
+  }, {
+    id: 4,
+    label: 'Empty Bin of Sawed 10" 1018'
+  }, {
+    id: 5,
+    label: 'Empty Bin of Sawed Bottom Plate'
+  }, {
+    id: 6,
+    label: 'Empty Bin of Sawed 6K Arms'
+  }, {
+    id: 7,
+    label: 'Empty Bin of Sawed 10K Arms'
+  }, {
+    id: 8,
+    label: 'Empty Bin of Sawed 12K Arms'
+  }, {
+    id: 9,
+    label: 'Empty Bin of Sawed e2 Arms'
+  }, {
+    id: 10,
+    label: 'Take Bins Away'
+  }]
+}, {
+  id: 14,
+  main: {
+    id: 0,
+    label: 'Socket Drill'
+  },
+  sub: [{
+    id: 0,
+    label: 'Sawed 4K sockets'
+  }, {
+    id: 1,
+    label: 'Sawed 6K Sockets'
+  }, {
+    id: 2,
+    label: 'Sawed 10K Sockets'
+  }, {
+    id: 3,
+    label: 'Sawed 12K Sockets'
+  }, {
+    id: 4,
+    label: 'Take Bins Away'
+  }]
+}, {
+  main: {
+    id: 0,
+    label: 'Welding Robot'
+  },
+  sub: [{
+    id: 0,
+    label: 'Specialty Shank Bin'
+  }, {
+    id: 1,
+    label: '1018 Shank Bin (12K)'
+  }, {
+    id: 2,
+    label: 'A572 Shank Bin (10K)'
+  }, {
+    id: 3,
+    label: 'Take Bins Away'
+  }]
+}, {
+  main: {
+    id: 0,
+    label: 'Welding Robot Area'
+  },
+  sub: [{
+    id: 0,
+    label: 'Bent Bolt Channel'
+  }, {
+    id: 1,
+    label: '14K Bent Bolt Channel'
+  }, {
+    id: 2,
+    label: 'Sheared Gussets'
+  }, {
+    id: 3,
+    label: 'Take Bins away'
+  }]
+}];
+
+/***/ }),
+
 /***/ "./lib/theme/primaryTheme.js":
 /*!***********************************!*\
   !*** ./lib/theme/primaryTheme.js ***!
@@ -574,14 +1008,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _date_io_moment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @date-io/moment */ "@date-io/moment");
 /* harmony import */ var _date_io_moment__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_date_io_moment__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _material_ui_pickers__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/pickers */ "@material-ui/pickers");
-/* harmony import */ var _material_ui_pickers__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_material_ui_pickers__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core */ "@material-ui/core");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _lib_options__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../lib/options */ "./lib/options.js");
+/* harmony import */ var _material_ui_pickers__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/pickers */ "@material-ui/pickers");
+/* harmony import */ var _material_ui_pickers__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_material_ui_pickers__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core */ "@material-ui/core");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__);
 
 
 
 var _jsxFileName = "/Users/ctracy/Sites/progress/production/master/pages/request.js";
+
 
 
 
@@ -596,9 +1032,7 @@ var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_5__["ma
     },
     formControl: {
       marginTop: theme.spacing(4),
-      minWidth: 120 //   margin: theme.spacing(1),
-      //   minWidth: 120,
-
+      minWidth: 120
     },
     selectEmpty: {
       marginTop: theme.spacing(2)
@@ -606,41 +1040,35 @@ var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_5__["ma
   };
 });
 
-var Request = function Request() {
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_3___default.a.useState('female'),
-      _React$useState2 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_2__["default"])(_React$useState, 2),
-      value = _React$useState2[0],
-      setValue = _React$useState2[1];
-
-  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_3___default.a.useState(new Date('2019-01-19T00:00:00')),
-      _React$useState4 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_2__["default"])(_React$useState3, 2),
-      selectedDate = _React$useState4[0],
-      setSelectedDate = _React$useState4[1];
-
-  function handleDateChange(date) {
-    setSelectedDate(date);
-  }
-
-  function handleChange(event) {
-    setValue(event.target.value);
-  }
-
+var Request = function Request(props) {
+  var url = props.url;
   var classes = useStyles();
+  var inputLabel = react__WEBPACK_IMPORTED_MODULE_3___default.a.useRef(null);
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_3___default.a.useState(new Date('NOW')),
+      _React$useState2 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_2__["default"])(_React$useState, 2),
+      selectedDate = _React$useState2[0],
+      setSelectedDate = _React$useState2[1];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_3___default.a.useState(0),
+      _React$useState4 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_2__["default"])(_React$useState3, 2),
+      labelWidth = _React$useState4[0],
+      setLabelWidth = _React$useState4[1];
 
   var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_3___default.a.useState({
-    age: '',
-    name: 'hai'
+    location: undefined,
+    issue: undefined
   }),
       _React$useState6 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_2__["default"])(_React$useState5, 2),
       values = _React$useState6[0],
       setValues = _React$useState6[1];
 
-  var inputLabel = react__WEBPACK_IMPORTED_MODULE_3___default.a.useRef(null);
-
-  var _React$useState7 = react__WEBPACK_IMPORTED_MODULE_3___default.a.useState(0),
+  var _React$useState7 = react__WEBPACK_IMPORTED_MODULE_3___default.a.useState({
+    asap: false
+  }),
       _React$useState8 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_2__["default"])(_React$useState7, 2),
-      labelWidth = _React$useState8[0],
-      setLabelWidth = _React$useState8[1];
+      state = _React$useState8[0],
+      setState = _React$useState8[1];
 
   react__WEBPACK_IMPORTED_MODULE_3___default.a.useEffect(function () {
     setLabelWidth(inputLabel.current.offsetWidth);
@@ -652,6 +1080,17 @@ var Request = function Request() {
     });
   }
 
+  var handleSwitchChange = function handleSwitchChange(name) {
+    return function (event) {
+      setState(Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])({}, name, event.target.checked)));
+    };
+  };
+
+  function handleDateChange(date) {
+    setSelectedDate(date);
+  }
+
+  console.log(state);
   return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_components_layout_primaryLayout__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __source: {
       fileName: _jsxFileName,
@@ -666,7 +1105,7 @@ var Request = function Request() {
       lineNumber: 71
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["Grid"], {
+  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["Grid"], {
     item: true,
     xs: 12,
     alignContent: "center",
@@ -676,7 +1115,7 @@ var Request = function Request() {
       lineNumber: 72
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["FormControl"], {
+  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["FormControl"], {
     fullWidth: true,
     variant: "outlined",
     className: classes.formControl,
@@ -685,7 +1124,7 @@ var Request = function Request() {
       lineNumber: 73
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["InputLabel"], {
+  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["InputLabel"], {
     ref: inputLabel,
     htmlFor: "outlined-age-simple",
     __source: {
@@ -693,13 +1132,13 @@ var Request = function Request() {
       lineNumber: 74
     },
     __self: this
-  }, "Where"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["Select"], {
-    value: values.age,
+  }, "Where"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["Select"], {
+    value: values.location,
     onChange: handleChange,
-    input: react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["OutlinedInput"], {
+    input: react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["OutlinedInput"], {
       labelWidth: labelWidth,
-      name: "age",
-      id: "outlined-age-simple",
+      name: "location",
+      id: "outlined-location-simple",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 80
@@ -711,7 +1150,7 @@ var Request = function Request() {
       lineNumber: 77
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["MenuItem"], {
+  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["MenuItem"], {
     disabled: true,
     value: "",
     __source: {
@@ -725,34 +1164,22 @@ var Request = function Request() {
       lineNumber: 82
     },
     __self: this
-  }, "Location")), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["MenuItem"], {
-    value: 10,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 83
-    },
-    __self: this
-  }, "Ten"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["MenuItem"], {
-    value: 20,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 84
-    },
-    __self: this
-  }, "Twenty"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["MenuItem"], {
-    value: 30,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 85
-    },
-    __self: this
-  }, "Thirty")), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["FormHelperText"], {
+  }, "Location")), _lib_options__WEBPACK_IMPORTED_MODULE_7__["Options"].map(function (location) {
+    return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["MenuItem"], {
+      value: location.id,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 84
+      },
+      __self: this
+    }, location.main.label);
+  })), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["FormHelperText"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 87
     },
     __self: this
-  }, "Select Location"))), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["Grid"], {
+  }, "Select Location"))), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["Grid"], {
     item: true,
     xs: 12,
     alignContent: "center",
@@ -762,7 +1189,7 @@ var Request = function Request() {
       lineNumber: 90
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["FormControl"], {
+  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["FormControl"], {
     fullWidth: true,
     variant: "outlined",
     className: classes.formControl,
@@ -771,7 +1198,7 @@ var Request = function Request() {
       lineNumber: 91
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["InputLabel"], {
+  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["InputLabel"], {
     ref: inputLabel,
     htmlFor: "outlined-age-simple",
     __source: {
@@ -779,13 +1206,13 @@ var Request = function Request() {
       lineNumber: 92
     },
     __self: this
-  }, "What"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["Select"], {
-    value: values.age,
+  }, "What"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["Select"], {
+    value: values.issue,
     onChange: handleChange,
-    input: react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["OutlinedInput"], {
+    input: react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["OutlinedInput"], {
       labelWidth: labelWidth,
-      name: "age",
-      id: "outlined-age-simple",
+      name: "issue",
+      id: "outlined-issue-simple",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 98
@@ -797,7 +1224,7 @@ var Request = function Request() {
       lineNumber: 95
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["MenuItem"], {
+  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["MenuItem"], {
     disabled: true,
     value: "",
     __source: {
@@ -811,44 +1238,39 @@ var Request = function Request() {
       lineNumber: 100
     },
     __self: this
-  }, "Issu")), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["MenuItem"], {
-    value: 10,
+  }, "Issue")), values.location && url.query.name == 'ic' && _lib_options__WEBPACK_IMPORTED_MODULE_7__["Options"][values.location].sub.map(function (issue) {
+    return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["MenuItem"], {
+      value: issue.id,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 103
+      },
+      __self: this
+    }, issue.label);
+  }), url.query.name == 'maintenance' && react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["MenuItem"], {
+    value: "0",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 101
+      lineNumber: 107
     },
     __self: this
-  }, "Ten"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["MenuItem"], {
-    value: 20,
+  }, "Machine Down")), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["FormHelperText"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 102
+      lineNumber: 110
     },
     __self: this
-  }, "Twenty"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["MenuItem"], {
-    value: 30,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 103
-    },
-    __self: this
-  }, "Thirty")), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["FormHelperText"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 105
-    },
-    __self: this
-  }, "Select Issue"))), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["Grid"], {
+  }, "Select Issue"))), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["Grid"], {
     item: true,
     xs: 12,
     alignContent: "center",
     justify: "center",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 108
+      lineNumber: 113
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["Grid"], {
+  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["Grid"], {
     component: "label",
     container: true,
     alignItems: "center",
@@ -856,84 +1278,87 @@ var Request = function Request() {
     spacing: 1,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 109
+      lineNumber: 114
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["Grid"], {
+  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["Grid"], {
     item: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 110
+      lineNumber: 115
     },
     __self: this
-  }, "Schedule"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["Grid"], {
+  }, "Schedule"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["Grid"], {
     item: true,
     alignItems: "center",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 111
+      lineNumber: 116
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["Switch"], {
+  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["Switch"], {
+    checked: state.asap,
+    onChange: handleSwitchChange('asap'),
+    value: "asap",
     color: "secondary",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 112
+      lineNumber: 117
     },
     __self: this
-  })), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["Grid"], {
+  })), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["Grid"], {
     item: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 114
+      lineNumber: 124
     },
     __self: this
-  }, "ASAP"))), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["Grid"], {
+  }, "ASAP"))), state.asap === false && react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["Grid"], {
     item: true,
     xs: 12,
     alignContent: "center",
     justify: "center",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 117
+      lineNumber: 128
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_pickers__WEBPACK_IMPORTED_MODULE_7__["MuiPickersUtilsProvider"], {
+  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_pickers__WEBPACK_IMPORTED_MODULE_8__["MuiPickersUtilsProvider"], {
     utils: _date_io_moment__WEBPACK_IMPORTED_MODULE_6___default.a,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 118
+      lineNumber: 129
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["Grid"], {
+  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["Grid"], {
     container: true,
     justify: "space-around",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 119
+      lineNumber: 130
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_pickers__WEBPACK_IMPORTED_MODULE_7__["DatePicker"], {
+  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_pickers__WEBPACK_IMPORTED_MODULE_8__["DatePicker"], {
     margin: "normal",
-    label: "Date picker",
+    label: "Choose Date",
     value: selectedDate,
     onChange: handleDateChange,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 120
+      lineNumber: 131
     },
     __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_pickers__WEBPACK_IMPORTED_MODULE_7__["TimePicker"], {
+  }), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_pickers__WEBPACK_IMPORTED_MODULE_8__["TimePicker"], {
     margin: "normal",
-    label: "Time picker",
+    label: "Choose Time",
     value: selectedDate,
     onChange: handleDateChange,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 126
+      lineNumber: 137
     },
     __self: this
-  })))), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["Grid"], {
+  })))), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["Grid"], {
     item: true,
     xs: 12,
     alignContent: "center",
@@ -943,10 +1368,10 @@ var Request = function Request() {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 135
+      lineNumber: 147
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["Button"], {
+  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["Button"], {
     style: {
       padding: "15px"
     },
@@ -956,7 +1381,7 @@ var Request = function Request() {
     color: "secondary",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 136
+      lineNumber: 148
     },
     __self: this
   }, "Submit Request"))));

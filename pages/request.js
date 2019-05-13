@@ -1,6 +1,7 @@
 import Layout from '../components/layout/primaryLayout';
 import { makeStyles } from '@material-ui/core/styles';
 import Moment from '@date-io/moment';
+import { Options } from '../lib/options'
 import {
 	DatePicker,
 	TimePicker,
@@ -26,46 +27,45 @@ const useStyles = makeStyles(theme => ({
 	formControl: {
 		marginTop: theme.spacing(4),
 		minWidth: 120
-
-	//   margin: theme.spacing(1),
-	//   minWidth: 120,
 	},
 	selectEmpty: {
 	  marginTop: theme.spacing(2),
 	},
 }));
 
-const Request = () => {
-	const [value, setValue] = React.useState('female');
-	const [selectedDate, setSelectedDate] = React.useState(new Date('2019-01-19T00:00:00'));
+const Request = (props) => {
+	const { url } = props
+	const classes = useStyles();
+	const inputLabel = React.useRef(null);
+	const [selectedDate, setSelectedDate] = React.useState(new Date('NOW'));
+	const [labelWidth, setLabelWidth] = React.useState(0);
+	const [values, setValues] = React.useState({
+    	location: undefined,
+    	issue: undefined,
+	});
+	const [state, setState] = React.useState({
+		asap: false
+	})
+	React.useEffect(() => {
+    	setLabelWidth(inputLabel.current.offsetWidth);
+  	}, []);
+
+	function handleChange(event) {
+    	setValues(oldValues => ({
+      		...oldValues,
+      		[event.target.name]: event.target.value,
+    	}));
+	}
+
+	const handleSwitchChange = name => event => {
+		setState({ ...state, [name]: event.target.checked });
+	};
 
 	function handleDateChange(date) {
 		setSelectedDate(date);
 	}
 
-  	function handleChange(event) {
-    	setValue(event.target.value);
-  	}
-
-	const classes = useStyles();
-  	const [values, setValues] = React.useState({
-    	age: '',
-    	name: 'hai',
-  	});
-
-  	const inputLabel = React.useRef(null);
-  	const [labelWidth, setLabelWidth] = React.useState(0);
-  	React.useEffect(() => {
-    	setLabelWidth(inputLabel.current.offsetWidth);
-  	}, []);
-
-  	function handleChange(event) {
-    	setValues(oldValues => ({
-      		...oldValues,
-      		[event.target.name]: event.target.value,
-    	}));
-  	}
-	
+	console.log(state)
 	return (
 		<Layout>
 			<form className={classes.root} autoComplete="off">
@@ -75,14 +75,14 @@ const Request = () => {
 							Where
 						</InputLabel>
 						<Select
-							value={values.age}
+							value={values.location}
 							onChange={handleChange}
-							input={<OutlinedInput labelWidth={labelWidth} name="age" id="outlined-age-simple" />}
+							input={<OutlinedInput labelWidth={labelWidth} name="location" id="outlined-location-simple" />}
 						>
 							<MenuItem disabled value=""><em>Location</em></MenuItem>
-							<MenuItem value={10}>Ten</MenuItem>
-							<MenuItem value={20}>Twenty</MenuItem>
-							<MenuItem value={30}>Thirty</MenuItem>
+							{Options.map(location => (
+								<MenuItem value={location.id}>{location.main.label}</MenuItem>
+							))}
 						</Select>
 						<FormHelperText>Select Location</FormHelperText>
 					</FormControl>
@@ -93,14 +93,19 @@ const Request = () => {
 							What
 						</InputLabel>
 						<Select
-							value={values.age}
+							value={values.issue}
 							onChange={handleChange}
-							input={<OutlinedInput labelWidth={labelWidth} name="age" id="outlined-age-simple" />}
+							input={<OutlinedInput labelWidth={labelWidth} name="issue" id="outlined-issue-simple" />}
 						>
-							<MenuItem disabled value=""><em>Issu</em></MenuItem>
-							<MenuItem value={10}>Ten</MenuItem>
-							<MenuItem value={20}>Twenty</MenuItem>
-							<MenuItem value={30}>Thirty</MenuItem>
+							<MenuItem disabled value=""><em>Issue</em></MenuItem>
+							{(values.location && url.query.name == 'ic') && 
+								(Options[values.location].sub).map(issue => (
+									<MenuItem value={issue.id}>{issue.label}</MenuItem>
+								))
+							}
+							{url.query.name == 'maintenance' &&
+								<MenuItem value="0">Machine Down</MenuItem>
+							}
 						</Select>
 						<FormHelperText>Select Issue</FormHelperText>
 					</FormControl>
@@ -109,29 +114,36 @@ const Request = () => {
 					<Grid component="label" container alignItems="center" justify="center" spacing={1}>
           				<Grid item>Schedule</Grid>
           				<Grid item alignItems="center">
-							<Switch color="secondary" />
+							<Switch 
+								checked={state.asap}
+								onChange={handleSwitchChange('asap')}
+								value="asap"
+								color="secondary"
+							/>
           				</Grid>
           				<Grid item>ASAP</Grid>
         			</Grid>
 				</Grid>
-				<Grid item xs={12} alignContent="center" justify="center">
-					<MuiPickersUtilsProvider utils={Moment}>
-						<Grid container justify="space-around">
-							<DatePicker
-								margin="normal"
-								label="Date picker"
-								value={selectedDate}
-								onChange={handleDateChange}
-							/>
-							<TimePicker
-								margin="normal"
-								label="Time picker"
-								value={selectedDate}
-								onChange={handleDateChange}
-							/>
-						</Grid>
-					</MuiPickersUtilsProvider>
-				</Grid>
+				{state.asap === false && 
+					<Grid item xs={12} alignContent="center" justify="center">
+						<MuiPickersUtilsProvider utils={Moment}>
+							<Grid container justify="space-around">
+								<DatePicker
+									margin="normal"
+									label="Choose Date"
+									value={selectedDate}
+									onChange={handleDateChange}
+								/>
+								<TimePicker
+									margin="normal"
+									label="Choose Time"
+									value={selectedDate}
+									onChange={handleDateChange}
+								/>
+							</Grid>
+						</MuiPickersUtilsProvider>
+					</Grid>
+				}
 				<Grid item xs={12} alignContent="center" justify="center" style={{ marginTop: "25px" }}>
 					<Button 
 						style={{ padding: "15px" }}
