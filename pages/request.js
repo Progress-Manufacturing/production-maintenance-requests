@@ -118,7 +118,7 @@ const Request = (props) => {
 								checked={state.asap}
 								onChange={handleSwitchChange('asap')}
 								value="asap"
-								color="secondary"
+								color="primary"
 							/>
           				</Grid>
           				<Grid item>ASAP</Grid>
