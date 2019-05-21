@@ -18,7 +18,7 @@ export default class Authentication {
     }
 
     this.applicationScope = {
-      scopes: ['openid', 'user.read', 'mail.send']
+      scopes: ['openid']
     }
 
     this.app = typeof window === 'undefined' ? null : new Msal.UserAgentApplication(this.applicationConfig)
@@ -108,7 +108,23 @@ export default class Authentication {
         return imageObj;
       }
     });
+  }
 
+
+  acquireTokenOnBehalf = () => {
+    fetch('https://login.microsoftonline.com/6ce5b98b-d71a-402e-83f3-1c277686f825/oauth2/v2.0/token', {
+      body: `client_id=${process.env.CLIENT_ID}&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=${process.env.CLIENT_SECRET}&grant_type=client_credentials`,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      method: 'POST'
+    }).then((res) => {
+      return res.text().then((data) => {
+        console.log(data)
+      })
+    }).catch((err) => {
+      console.log(err)
+    })
   }
 
   getUser = () => {

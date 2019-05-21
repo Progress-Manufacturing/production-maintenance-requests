@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { withRouter } from 'next/router';
 import Moment from '@date-io/moment';
 import Options from '../src/options';
+import Authentication from '../src/msalAuth';
 import {
 	DatePicker,
 	TimePicker,
@@ -35,6 +36,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Request = (props) => {
+	const auth = new Authentication();
 	const { router } = props
 	const classes = useStyles();
 	const inputLabel = React.useRef(null);
@@ -66,9 +68,17 @@ const Request = (props) => {
 		setSelectedDate(date);
 	}
 
+	function handleSubmit(e) {
+		e.preventDefault();
+	}
+
 	return (
 		<Layout>
-			<form className={classes.root} autoComplete='off'>
+			<form 
+				className={classes.root} 
+				autoComplete='off'
+				onSubmit={handleSubmit}
+			>
 				<Grid item xs={12}>
 					<FormControl fullWidth variant='outlined' className={classes.formControl}>
 						<InputLabel ref={inputLabel} htmlFor='outlined-location-simple'>
@@ -148,6 +158,7 @@ const Request = (props) => {
 					<Button 
 						style={{ padding: '15px' }}
 						fullWidth
+						type='submit'
 						size='large'
 						variant='contained'
 						color='secondary'
