@@ -113,6 +113,7 @@ const Request = (props) => {
 		}
 
 		auth.callMSGraphPost(cookies.token, postUrl, taskPayload).then((res) => {
+			
 			if(res.error) {
 				console.log(res.error);
 				setValues(oldValues => ({
@@ -120,6 +121,7 @@ const Request = (props) => {
 					errorCode: true
 				}));
 			} else {
+				console.log({ res });
 				setValues(oldValues => ({
 					...oldValues,
 					requestSent: true
@@ -242,9 +244,19 @@ const Request = (props) => {
 						<Typography variant="h5" component="h5" style={{ color: 'white', padding: '10px' }}>Thank You</Typography>
 					</div>
 					<div style={{ textAlign: 'center', padding: '25px' }}>
-						<Typography style={{ marginBottom: '10px' }}>You are <b style={{ color: '#d32f2f' }}>87</b> in the queue</Typography>
-						<Typography style={{ marginBottom: '10px' }}>It will take approximately</Typography>
-						<Typography style={{ color: '#d32f2f', marginBottom: '10px', fontWeight: 'bold' }}>15 minutes</Typography>
+						{state.asap === true &&
+							<Grid>
+								<Typography style={{ marginBottom: '10px' }}>{ (router.query.name).toUpperCase() } will get to you in the next</Typography>
+								<Typography style={{ color: '#d32f2f', marginBottom: '10px', fontWeight: 'bold' }}>15 - 20 minutes</Typography>
+							</Grid>
+						}
+						{state.asap === false &&
+							<Grid>
+								<Typography style={{ marginBottom: '10px' }}>{ (router.query.name).toUpperCase() } will get to you on or before the selected date of</Typography>
+								<Typography style={{ color: '#d32f2f', marginBottom: '10px', fontWeight: 'bold' }}>{startDate}</Typography>
+							</Grid>
+						}
+						
 						<Typography style={{ marginBottom: '10px' }}>to fufill your request, thank you for your patience.</Typography>
 					</div>
 				</div>
