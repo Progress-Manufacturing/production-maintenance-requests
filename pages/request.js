@@ -1,7 +1,9 @@
 import Layout from '../components/layout/primaryLayout';
 import { makeStyles } from '@material-ui/core/styles';
+import Link from 'next/link';
 import { withRouter } from 'next/router';
-import Moment from '@date-io/moment';
+import DateFnsUtils from "@date-io/date-fns";
+import { format, endOfDay, addMinutes } from 'date-fns';
 import { parseCookies } from 'nookies';
 import Options from '../src/options';
 import Authentication from '../src/msalAuth';
@@ -19,7 +21,8 @@ import {
 	OutlinedInput,
 	FormHelperText,
 	Button,
-	Switch
+	Switch,
+	Typography
 } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
@@ -42,16 +45,16 @@ const Request = (props) => {
 	const cookies = parseCookies();
 	const classes = useStyles();
 	const inputLabel = React.useRef(null);
-	const [selectedDate, setSelectedDate] = React.useState(new Date('NOW'));
+	const [selectedDate, setSelectedDate] = React.useState(new Date());
 	const [labelWidth, setLabelWidth] = React.useState(0);
 	const [values, setValues] = React.useState({
     	location: '',
 			issue: '',
 			locationId: '',
-			issueId: ''
+			issueId: '',
+			requestSent: false,
+			errorCode: false
 	});
-	let subject = '';
-	let postUrl = '';
 	const [state, setState] = React.useState({
 		asap: router.query.name === 'ic' ? false : true
 	})
@@ -75,38 +78,64 @@ const Request = (props) => {
 		setSelectedDate(date);
 	}
 
+	let subject = '', 
+			postUrl = '', 
+			startDate = '', 
+			endDate = format(endOfDay(selectedDate), 'yyyy-MM-dd HH:mm:ss');
+	
 	function handleSubmit(e) {
 		e.preventDefault();
 		
-		if (router.query.name === 'ic') {
-			postUrl = 'https://graph.microsoft.com/beta/users/6f4259ed-40d9-431c-864a-30143c9b3013/outlook/taskFolders/AQMkAGZhNDY0YWZlLWEzNmEtNGRmNi1hODMwLTg2ODNkY2E5NmJlNwAuAAADkDFzQm1NZUCOFvLqCppoawEAxgV51NHhr06FqTjfmmUEOgABYyKzKwAAAA==/tasks'
-			subject = `${values.location} - ${values.issue}`
+		if (router.query.name === 'ic') {			
+			postUrl = 'https://graph.microsoft.com/v1.0/users/6f4259ed-40d9-431c-864a-30143c9b3013/calendars/AQMkAGZhNDY0YWZlLWEzNmEtNGRmNi1hODMwLTg2ODNkY2E5NmJlNwBGAAADkDFzQm1NZUCOFvLqCppoawcAxgV51NHhr06FqTjfmmUEOgAAAgEGAAAAxgV51NHhr06FqTjfmmUEOgABaQEaggAAAA==/events';
+			subject = `${values.location} - ${values.issue}`;
+			startDate = state.asap === true ? format(addMinutes(selectedDate, 5), 'yyyy-MM-dd HH:mm:ss') : format(selectedDate, 'yyyy-MM-dd hh:mm:ss');
 		} else {
-			postUrl = 'https://graph.microsoft.com/beta/users/6f4259ed-40d9-431c-864a-30143c9b3013/outlook/taskFolders/AQMkAGZhNDY0YWZlLWEzNmEtNGRmNi1hODMwLTg2ODNkY2E5NmJlNwAuAAADkDFzQm1NZUCOFvLqCppoawEAxgV51NHhr06FqTjfmmUEOgABYyKzLAAAAA==/tasks'
-			subject = `${values.issue} - ${values.location}`
-		}
-		console.log({ postUrl })
-		
-		const taskPayload = {
-				"subject": subject,
-				"startDateTime": {
-						"dateTime": "2019-05-23T18:00:00",
-						"timeZone": "Mountain Standard Time"
-				},
-				"dueDateTime":  {
-						"dateTime": "2019-05-25T13:00:00",
-						"timeZone": "Mountain Standard Time"
-				}
+			postUrl = 'https://graph.microsoft.com/v1.0/users/6f4259ed-40d9-431c-864a-30143c9b3013/calendars/AQMkAGZhNDY0YWZlLWEzNmEtNGRmNi1hODMwLTg2ODNkY2E5NmJlNwBGAAADkDFzQm1NZUCOFvLqCppoawcAxgV51NHhr06FqTjfmmUEOgAAAgEGAAAAxgV51NHhr06FqTjfmmUEOgABaQEagwAAAA==/events';
+			subject = `${values.issue} - ${values.location}`;
+			startDate = format(addMinutes(selectedDate, 5), 'yyyy-MM-dd HH:mm:ss');
 		}
 
-		// console.log('date: ', selectedDate);
+		const taskPayload = {
+				"subject": subject,
+				"start": {
+						"dateTime": startDate,
+						"timeZone": "Mountain Standard Time"
+				},
+				"end": {
+						"dateTime": endDate,
+						"timeZone": "Mountain Standard Time"
+				},
+				"location":{
+						"displayName": values.location
+				},
+				"reminderMinutesBeforeStart": 1
+		}
+
 		auth.callMSGraphPost(cookies.token, postUrl, taskPayload).then((res) => {
-			console.log(res)
+			if(res.error) {
+				console.log(res.error);
+				setValues(oldValues => ({
+					...oldValues,
+					errorCode: true
+				}));
+			} else {
+				setValues(oldValues => ({
+					...oldValues,
+					requestSent: true
+				}));
+			}
 		})
 	}
-	
+
 	return (
 		<Layout>
+			{values.errorCode &&
+				<Grid item sm={12} style={{ marginTop: '15px', maxWidth: '400px', backgroundColor: '#FFBABA', borderRadius: '8px' }}>
+					<Typography style={{ color: '#D8000C', textAlign: 'center' }}>Sorry, something went wrong with the request. Please try again or contact helpdesk.</Typography>
+				</Grid>
+			}
+			{!values.requestSent && 
 			<form 
 				className={classes.root} 
 				autoComplete='off'
@@ -173,7 +202,7 @@ const Request = (props) => {
 						</Grid>
 						{state.asap === false && 
 							<Grid item xs={12}>
-								<MuiPickersUtilsProvider utils={Moment}>
+								<MuiPickersUtilsProvider utils={DateFnsUtils}>
 									<Grid container justify='space-around'>
 										<DatePicker
 											margin='normal'
@@ -204,6 +233,35 @@ const Request = (props) => {
 					>Submit Request</Button>
 				</Grid>
 			</form>
+			}
+
+			{values.requestSent &&
+				<Grid item sm={12}>
+				<div style={{ border: '1px solid gray', borderRadius: '8px', overflow: 'hidden' }}>
+					<div style={{ backgroundColor: '#59575a', textAlign: 'center' }}>
+						<Typography variant="h5" component="h5" style={{ color: 'white', padding: '10px' }}>Thank You</Typography>
+					</div>
+					<div style={{ textAlign: 'center', padding: '25px' }}>
+						<Typography style={{ marginBottom: '10px' }}>You are <b style={{ color: '#d32f2f' }}>87</b> in the queue</Typography>
+						<Typography style={{ marginBottom: '10px' }}>It will take approximately</Typography>
+						<Typography style={{ color: '#d32f2f', marginBottom: '10px', fontWeight: 'bold' }}>15 minutes</Typography>
+						<Typography style={{ marginBottom: '10px' }}>to fufill your request, thank you for your patience.</Typography>
+					</div>
+				</div>
+				<div style={{ marginTop: '15px' }}>
+					<Link passHref href='/'>
+						<Button
+							style={{ padding: '15px' }}
+							fullWidth
+							size='large'
+							spacing={2}
+							variant='contained'
+							color='secondary'
+						>Return to Request Page</Button>
+					</Link>
+				</div>
+			</Grid>        
+			}
 		</Layout>
 	)
 }

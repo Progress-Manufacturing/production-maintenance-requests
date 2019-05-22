@@ -93,10 +93,11 @@ export default class Authentication {
     const headers = new Headers();
     const bearer = `Bearer ${token}`;
     headers.append('Authorization', bearer);
+    headers.append('Content-Type','application/json');
     const options = {
       method: 'POST',
       headers: headers,
-      body: body
+      body: JSON.stringify(body)
     };
 
     return fetch(endpoint, options).then((response) => {
