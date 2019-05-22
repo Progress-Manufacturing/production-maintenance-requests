@@ -14,6 +14,11 @@ class MyDocument extends Document {
             name="viewport"
             content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
           />
+          <meta 
+            name="description"
+            content="Production application to help shorten response times of maintenance requests"
+          />
+
           <meta name="theme-color" content={theme.palette.primary.main} />
           <link
             rel="stylesheet"

@@ -2,6 +2,7 @@ import Layout from '../components/layout/primaryLayout';
 import { makeStyles } from '@material-ui/core/styles';
 import { withRouter } from 'next/router';
 import Moment from '@date-io/moment';
+import { parseCookies } from 'nookies';
 import Options from '../src/options';
 import Authentication from '../src/msalAuth';
 import {
@@ -37,27 +38,33 @@ const useStyles = makeStyles(theme => ({
 
 const Request = (props) => {
 	const auth = new Authentication();
-	const { router } = props
+	const { router } = props;
+	const cookies = parseCookies();
 	const classes = useStyles();
 	const inputLabel = React.useRef(null);
 	const [selectedDate, setSelectedDate] = React.useState(new Date('NOW'));
 	const [labelWidth, setLabelWidth] = React.useState(0);
 	const [values, setValues] = React.useState({
     	location: '',
-    	issue: '',
+			issue: '',
+			locationId: '',
+			issueId: ''
 	});
+	let subject = '';
+	let postUrl = '';
 	const [state, setState] = React.useState({
-		asap: false
+		asap: router.query.name === 'ic' ? false : true
 	})
 	React.useEffect(() => {
     	setLabelWidth(inputLabel.current.offsetWidth);
-  	}, []);
+  }, []);
 
-	function handleChange(event) {
-    	setValues(oldValues => ({
-      		...oldValues,
-      		[event.target.name]: event.target.value,
-    	}));
+	function handleChange(event, attr) {
+		setValues(oldValues => ({
+			...oldValues,
+			[event.target.name]: event.target.value,
+			[event.target.name + 'Id']: attr.key - 1
+		}));
 	}
 
 	const handleSwitchChange = name => event => {
@@ -70,8 +77,34 @@ const Request = (props) => {
 
 	function handleSubmit(e) {
 		e.preventDefault();
-	}
+		
+		if (router.query.name === 'ic') {
+			postUrl = 'https://graph.microsoft.com/beta/users/6f4259ed-40d9-431c-864a-30143c9b3013/outlook/taskFolders/AQMkAGZhNDY0YWZlLWEzNmEtNGRmNi1hODMwLTg2ODNkY2E5NmJlNwAuAAADkDFzQm1NZUCOFvLqCppoawEAxgV51NHhr06FqTjfmmUEOgABYyKzKwAAAA==/tasks'
+			subject = `${values.location} - ${values.issue}`
+		} else {
+			postUrl = 'https://graph.microsoft.com/beta/users/6f4259ed-40d9-431c-864a-30143c9b3013/outlook/taskFolders/AQMkAGZhNDY0YWZlLWEzNmEtNGRmNi1hODMwLTg2ODNkY2E5NmJlNwAuAAADkDFzQm1NZUCOFvLqCppoawEAxgV51NHhr06FqTjfmmUEOgABYyKzLAAAAA==/tasks'
+			subject = `${values.issue} - ${values.location}`
+		}
+		console.log({ postUrl })
+		
+		const taskPayload = {
+				"subject": subject,
+				"startDateTime": {
+						"dateTime": "2019-05-23T18:00:00",
+						"timeZone": "Mountain Standard Time"
+				},
+				"dueDateTime":  {
+						"dateTime": "2019-05-25T13:00:00",
+						"timeZone": "Mountain Standard Time"
+				}
+		}
 
+		// console.log('date: ', selectedDate);
+		auth.callMSGraphPost(cookies.token, postUrl, taskPayload).then((res) => {
+			console.log(res)
+		})
+	}
+	
 	return (
 		<Layout>
 			<form 
@@ -90,9 +123,11 @@ const Request = (props) => {
 							input={<OutlinedInput labelWidth={labelWidth} name='location' id='outlined-location-simple' />}
 						>
 							<MenuItem disabled value=''><em>Location</em></MenuItem>
-							{Options.map(location => (
-								<MenuItem key={location.id} value={location.id}>{location.main.label}</MenuItem>
-							))}
+							{Options.map(location => {
+								return (
+									<MenuItem key={location.id} value={location.main.label}>{location.main.label}</MenuItem>
+								)
+							})}
 						</Select>
 						<FormHelperText>Select Location</FormHelperText>
 					</FormControl>
@@ -108,51 +143,55 @@ const Request = (props) => {
 							input={<OutlinedInput labelWidth={labelWidth} name='issue' id='outlined-issue-simple' />}
 						>
 							<MenuItem disabled value='' key='-1'><em>Issue</em></MenuItem>
-							{(values.location && router.query.name == 'ic') &&
-								(Options[values.location].sub).map(issue => (
-									<MenuItem key={issue.id} value={issue.id}>{issue.label}</MenuItem>
+							{(values.location && router.query.name == 'ic') && 
+								(Options[values.locationId].sub).map(issue => (
+									<MenuItem key={issue.id} value={issue.label}>{issue.label}</MenuItem>
 								))
 							}
 							{router.query.name == 'maintenance' &&
-								<MenuItem value='0' key='0'>Machine Down</MenuItem>
+								<MenuItem value='Machine Down' key='0'>Machine Down</MenuItem>
 							}
 						</Select>
 						<FormHelperText>Select Issue</FormHelperText>
 					</FormControl>
 				</Grid>
-				<Grid item xs={12}>
-					<Grid component='label' container alignItems='center' justify='center' spacing={1}>
-          				<Grid item>Schedule</Grid>
-          				<Grid item>
-							<Switch 
-								checked={state.asap}
-								onChange={handleSwitchChange('asap')}
-								value='asap'
-								color='primary'
-							/>
-          				</Grid>
-          				<Grid item>ASAP</Grid>
-        			</Grid>
-				</Grid>
-				{state.asap === false && 
+				{router.query.name === 'ic' && (
 					<Grid item xs={12}>
-						<MuiPickersUtilsProvider utils={Moment}>
-							<Grid container justify='space-around'>
-								<DatePicker
-									margin='normal'
-									label='Choose Date'
-									value={selectedDate}
-									onChange={handleDateChange}
-								/>
-								<TimePicker
-									margin='normal'
-									label='Choose Time'
-									value={selectedDate}
-									onChange={handleDateChange}
-								/>
+						<Grid item xs={12}>
+							<Grid component='label' container alignItems='center' justify='center' spacing={1}>
+											<Grid item>Schedule</Grid>
+											<Grid item>
+									<Switch 
+										checked={state.asap}
+										onChange={handleSwitchChange('asap')}
+										value='asap'
+										color='primary'
+									/>
+											</Grid>
+											<Grid item>ASAP</Grid>
+									</Grid>
+						</Grid>
+						{state.asap === false && 
+							<Grid item xs={12}>
+								<MuiPickersUtilsProvider utils={Moment}>
+									<Grid container justify='space-around'>
+										<DatePicker
+											margin='normal'
+											label='Choose Date'
+											value={selectedDate}
+											onChange={handleDateChange}
+										/>
+										<TimePicker
+											margin='normal'
+											label='Choose Time'
+											value={selectedDate}
+											onChange={handleDateChange}
+										/>
+									</Grid>
+								</MuiPickersUtilsProvider>
 							</Grid>
-						</MuiPickersUtilsProvider>
-					</Grid>
+						}
+					</Grid> )
 				}
 				<Grid item xs={12} style={{ marginTop: '25px' }}>
 					<Button 

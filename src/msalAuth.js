@@ -88,7 +88,26 @@ export default class Authentication {
     }
   }
 
-  callMSGraph = (isBlob, token, endpoint) => {
+
+  callMSGraphPost = (token, endpoint, body) => {
+    const headers = new Headers();
+    const bearer = `Bearer ${token}`;
+    headers.append('Authorization', bearer);
+    const options = {
+      method: 'POST',
+      headers: headers,
+      body: body
+    };
+
+    return fetch(endpoint, options).then((response) => {
+        return response.json().then((data) => {        
+          return data;
+        });  
+    });
+  }
+
+
+  callMSGraphGet = (isBlob, token, endpoint) => {
     const headers = new Headers();
     const bearer = `Bearer ${token}`;
     headers.append('Authorization', bearer);
