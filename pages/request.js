@@ -112,16 +112,13 @@ const Request = (props) => {
 				"reminderMinutesBeforeStart": 1
 		}
 
-		auth.callMSGraphPost(cookies.token, postUrl, taskPayload).then((res) => {
-			
+		auth.callMSGraphPost(cookies.token, postUrl, taskPayload).then((res) => {			
 			if(res.error) {
-				console.log(res.error);
 				setValues(oldValues => ({
 					...oldValues,
 					errorCode: true
 				}));
 			} else {
-				console.log({ res });
 				setValues(oldValues => ({
 					...oldValues,
 					requestSent: true
@@ -261,7 +258,7 @@ const Request = (props) => {
 					</div>
 				</div>
 				<div style={{ marginTop: '15px' }}>
-					<Link passHref href='/'>
+					<Link passHref prefetch href='/'>
 						<Button
 							style={{ padding: '15px' }}
 							fullWidth
