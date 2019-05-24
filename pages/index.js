@@ -41,9 +41,6 @@ class Home extends Component {
       });
     } 
 
-    const cookies = parseCookies();
-    console.log({ cookies })
-
     return (
       <Layout>
         <Grid item xs={12}>

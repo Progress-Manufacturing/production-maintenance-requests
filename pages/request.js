@@ -80,8 +80,8 @@ const Request = (props) => {
 
 	let subject = '', 
 			postUrl = '', 
-			startDate = '', 
-			endDate = format(endOfDay(selectedDate), 'yyyy-MM-dd HH:mm:ss');
+			startDate = '';
+			endDate = format(addMinutes(selectedDate, 30), 'yyyy-MM-dd HH:mm:ss');
 	
 	function handleSubmit(e) {
 		e.preventDefault();
@@ -90,6 +90,7 @@ const Request = (props) => {
 			postUrl = 'https://graph.microsoft.com/v1.0/users/6f4259ed-40d9-431c-864a-30143c9b3013/calendars/AQMkAGZhNDY0YWZlLWEzNmEtNGRmNi1hODMwLTg2ODNkY2E5NmJlNwBGAAADkDFzQm1NZUCOFvLqCppoawcAxgV51NHhr06FqTjfmmUEOgAAAgEGAAAAxgV51NHhr06FqTjfmmUEOgABaQEaggAAAA==/events';
 			subject = `${values.location} - ${values.issue}`;
 			startDate = state.asap === true ? format(addMinutes(selectedDate, 5), 'yyyy-MM-dd HH:mm:ss') : format(selectedDate, 'yyyy-MM-dd hh:mm:ss');
+			
 		} else {
 			postUrl = 'https://graph.microsoft.com/v1.0/users/6f4259ed-40d9-431c-864a-30143c9b3013/calendars/AQMkAGZhNDY0YWZlLWEzNmEtNGRmNi1hODMwLTg2ODNkY2E5NmJlNwBGAAADkDFzQm1NZUCOFvLqCppoawcAxgV51NHhr06FqTjfmmUEOgAAAgEGAAAAxgV51NHhr06FqTjfmmUEOgABaQEagwAAAA==/events';
 			subject = `${values.issue} - ${values.location}`;
